@@ -7,6 +7,7 @@ filename = "input_test.csv"
 with open(filename, 'r') as file:
     lines = file.readlines()
 
+
 # Define a mapping function
 def transform_element(element):
     mapping = {'A': 14, 'K': 13, 'Q': 12, 'J': 11, 'T': 10}
