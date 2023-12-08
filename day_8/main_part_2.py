@@ -1,4 +1,4 @@
-import sys
+import math
 
 
 def get_next_node(current_node, graph, instruction):
@@ -33,19 +33,32 @@ for graph_line in graph_lines:
     graph[start_node_str] = destinations_str.split(",")
 
 
-steps = 0
-current_node = graph_lines[0][0:3]
+steps_list = []
+current_nodes = [node for node in graph if node.endswith("A")]
 
-while True:
+for current_node in current_nodes:
+    steps = 0
 
-    for instruction in instructions:
-        # print(instruction)
-        current_node = get_next_node(current_node, graph, instruction)
-        steps += 1
-        # print(current_node)
+    found = False
+    print(current_node)
 
-        if current_node == "ZZZ":
-            print("steps", steps)
-            sys.exit()
+    while found is False:
+
+        for instruction in instructions:
+            # print(instruction)
+            current_node = get_next_node(current_node, graph, instruction)
+            steps += 1
+            # print(current_node)
+
+            if current_node.endswith("Z"):
+                print("steps", steps)
+                steps_list.append(steps)
+                found = True
+
+            if found:
+                break
 
 
+result = math.lcm(*steps_list)
+
+print(f"LCM of {steps_list} is: {result}")
