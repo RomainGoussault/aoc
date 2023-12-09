@@ -1,6 +1,6 @@
 import numpy as np
 
-filename = "input.txt"
+filename = "day_5/input_test.csv"
 
 try:
     with open(filename, 'r') as file:
@@ -20,6 +20,7 @@ except Exception as e:
 
 MAP_SIZE = int(max_integer*1.1)
 
+
 def string_to_int_list(input_string):
     # Split the string into a list of substrings
     substrings = input_string.split()
@@ -29,6 +30,7 @@ def string_to_int_list(input_string):
 
     return int_list
 
+
 def get_seeds(lines):
     seed_line = lines[0]
     seeds_str = seed_line.split(":")[1]
@@ -36,13 +38,14 @@ def get_seeds(lines):
 
     new_seeds_list = np.empty(0) # np.zeros(len(MAP_SIZE))
     for i in range(0, len(seeds_list), 2):
-            print("progress seeds: " + str(int(i / len(seeds_list) /2 * 100)) + "%")
-            start = seeds_list[i]
-            range_seed = seeds_list[i + 1]
-            new_stuff = np.arange(start, start + range_seed)
-            new_seeds_list = np.concatenate((new_seeds_list, new_stuff))
+        print("progress seeds: " + str(int(i / len(seeds_list) /2 * 100)) + "%")
+        start = seeds_list[i]
+        range_seed = seeds_list[i + 1]
+        new_stuff = np.arange(start, start + range_seed)
+        new_seeds_list = np.concatenate((new_seeds_list, new_stuff))
 
     return new_seeds_list.astype(int)
+
 
 def build_map(name, map_size):
 
@@ -65,9 +68,10 @@ def build_map(name, map_size):
 
             destination, source, range = string_to_int_list(line)
             # print(destination, source, range)
-            map[source : source + range] = np.arange(destination, destination + range)
+            map[source: source + range] = np.arange(destination, destination + range)
 
     return map
+
 
 with open(filename, 'r') as file:
     lines = file.readlines()
@@ -129,4 +133,3 @@ del humiditys
 
 
 print(min(locations))
-
