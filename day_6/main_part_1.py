@@ -1,6 +1,6 @@
 import numpy as np
 
-filename = "input.csv"
+filename = "day_6/input.csv"
 
 
 def string_to_int_list(input_string):

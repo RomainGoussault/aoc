@@ -1,6 +1,6 @@
 import re
 
-filename = "input.csv"
+filename = "day_4/input.csv"
 
 def string_to_int_list(input_string):
     # Split the string into a list of substrings

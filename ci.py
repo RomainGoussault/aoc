@@ -1,6 +1,7 @@
 import subprocess
 import glob
 
+
 def run_all_python_files(files):
 
     for file in files:

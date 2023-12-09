@@ -1,7 +1,7 @@
 import re
 import pandas as pd
 
-df  = pd.read_csv("input.csv", header=None)
+df  = pd.read_csv("day_1/input.csv", header=None)
 
 candidates = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 

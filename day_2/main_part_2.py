@@ -1,6 +1,6 @@
 import re
 
-filename = "input.csv"
+filename = "day_2/input.csv"
 
 MAX_CUBES = {"red":12, "green":13, "blue":14}
 

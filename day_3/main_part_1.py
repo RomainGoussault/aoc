@@ -3,7 +3,7 @@ import numpy as np
 
 def file_2_numpy(file_path):
     # Specify the file path
-    file_path = 'input.csv'  # Replace with the actual path to your file
+    file_path = 'day_3/input.csv'  # Replace with the actual path to your file
 
     # Read the file and store each character in a list
     with open(file_path, 'r') as file:

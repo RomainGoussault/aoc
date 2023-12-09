@@ -1,7 +1,7 @@
 import re
 import numpy as np
 
-filename = "input.csv"
+filename = "day_4/input.csv"
 
 def extract_numbers(string):
     return re.findall(r'\d+', string)
