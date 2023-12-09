@@ -1,9 +1,12 @@
 import re
 import pandas as pd
 
-df  = pd.read_csv("day_1/input.csv", header=None)
+df = pd.read_csv("day_1/input.csv", header=None)
 
-candidates = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+candidates = [
+    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+    "1", "2", "3", "4", "5", "6", "7", "8", "9"
+]
 
 
 def str_2_digit(input):
@@ -18,8 +21,10 @@ def str_2_digit(input):
     output = output.replace("nine", "9")
     return output
 
+
 def find_idx(input, substring):
     return [m.start() for m in re.finditer(substring, input)]
+
 
 def get_z(input_str):
 
@@ -46,14 +51,15 @@ def get_z(input_str):
                     last_digit = candidate
                     upper_index = index
 
-        except:
-            a = 3
+        except Exception:
+            pass
 
     first_num = str_2_digit(first_digit)
     last_num = str_2_digit(last_digit)
 
     z = int(first_num + last_num)
     return z
+
 
 sum = 0
 for index, row in df.iterrows():

@@ -2,7 +2,8 @@ import re
 
 filename = "day_2/input.csv"
 
-MAX_CUBES = {"red":12, "green":13, "blue":14}
+MAX_CUBES = {"red": 12, "green": 13, "blue": 14}
+
 
 def is_tirage_possible(tirage):
     cubes_list = tirage.split(",")
@@ -12,12 +13,13 @@ def is_tirage_possible(tirage):
         color = re.sub(r'[\d\s]+', '', cubes)
         max_allowed_cubes = MAX_CUBES[color]
         is_tirage_possible = cubes_count <= max_allowed_cubes
-        
+
         if not is_tirage_possible:
             return False
-    
+
     return True
-    
+
+
 def is_game_possible_func(line):
 
     line = line.split(":")[1]
@@ -29,6 +31,7 @@ def is_game_possible_func(line):
             return False
 
     return True
+
 
 def get_first_number(input_string):
     # Use regular expression to find the first number
@@ -62,4 +65,3 @@ for line in lines:
         sum = sum + int(id)
 
 print(sum)
-

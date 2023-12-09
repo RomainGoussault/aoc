@@ -15,7 +15,11 @@ def run_all_python_files(files):
 
 def run_python_script(file_path):
     try:
-        subprocess.check_output(["python3", file_path], stderr=subprocess.STDOUT, universal_newlines=True)
+        subprocess.check_output(
+            ["python3", file_path],
+            stderr=subprocess.STDOUT,
+            universal_newlines=True
+        )
         return 0
     except subprocess.CalledProcessError as e:
         print(f"Exception in {file_path}: {e.output}")
@@ -24,10 +28,8 @@ def run_python_script(file_path):
 
 if __name__ == "__main__":
 
-    # Utilisez le motif '*.py' pour rechercher tous les fichiers se terminant par '.py'
     python_files = glob.glob('day_*/*.py')
 
-    # Affichez la liste des fichiers trouvés
     print("Fichiers Python trouvés :")
     for file in python_files:
         print(file)

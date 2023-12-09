@@ -48,7 +48,7 @@ def get_z(input_str):
                     last_digit = candidate
                     upper_index = index
 
-        except Exception as e:
+        except Exception:
             pass
 
     first_num = str_2_digit(first_digit)
@@ -56,6 +56,7 @@ def get_z(input_str):
 
     z = int(first_num + last_num)
     return z
+
 
 sum = 0
 for index, row in df.iterrows():
