@@ -2,8 +2,6 @@ import numpy as np
 
 
 def file_2_numpy(file_path):
-    # Specify the file path
-    file_path = 'day_3/input.csv'  # Replace with the actual path to your file
 
     # Read the file and store each character in a list
     with open(file_path, 'r') as file:
@@ -27,10 +25,11 @@ def get_neighbor_digit_coordinates(array, row, col):
 
                 value = array[i][j]
                 if value.isdigit():
-                    coordinates = (i,j)
+                    coordinates = (i, j)
                     neighbors.append(coordinates)
 
     return neighbors
+
 
 def get_first_digit_of_adjacent_part(array, i, j):
 
@@ -60,7 +59,7 @@ def get_first_digit_of_adjacent_part(array, i, j):
 
 def get_digits_counts(array_2d, i, j):
 
-    rows_len, cols_len = len(array_2d), len(array_2d[0])
+    rows_len, _ = len(array_2d), len(array_2d[0])
 
     digits_counts = 1
 
@@ -76,7 +75,7 @@ def get_digits_counts(array_2d, i, j):
     return digits_counts
 
 
-array_2d = file_2_numpy('input_test.csv')
+array_2d = file_2_numpy('day_3/input_test.csv')
 rows, cols = array_2d.shape
 sum = 0
 print(array_2d.shape)
@@ -91,7 +90,7 @@ for i in range(rows):
         if is_a_gear:
             
             first_digit_coordinates_set = get_first_digit_of_adjacent_part(array_2d, i, j)
-            if(len(first_digit_coordinates_set)) == 2:
+            if len(first_digit_coordinates_set) == 2:
 
                 print("")
                 print("GEAR RATIO FOUND")

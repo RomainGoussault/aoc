@@ -9,7 +9,7 @@ def is_tirage_possible(tirage):
     cubes_list = tirage.split(",")
 
     for cubes in cubes_list:
-        cubes_count = int(re.findall(r'\d+',cubes)[0])
+        cubes_count = int(re.findall(r'\d+', cubes)[0])
         color = re.sub(r'[\d\s]+', '', cubes)
         max_allowed_cubes = MAX_CUBES[color]
         is_tirage_possible = cubes_count <= max_allowed_cubes

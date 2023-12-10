@@ -10,7 +10,7 @@ def get_cubes_count_dict(tirage):
 
     cubes_count_dict = {}
     for cubes in cubes_list:
-        cubes_count = int(re.findall(r'\d+',cubes)[0])
+        cubes_count = int(re.findall(r'\d+', cubes)[0])
         color = re.sub(r'[\d\s]+', '', cubes)
         cubes_count_dict[color] = cubes_count
 
@@ -22,7 +22,7 @@ def power_of_game(line):
     line = line.split(":")[1]
     tirages = line.split(";")
 
-    max_cube_count_dict = {"blue":0, "red":0, "green":0 }
+    max_cube_count_dict = {"blue": 0, "red": 0, "green": 0}
 
     for tirage in tirages:
 
@@ -34,7 +34,10 @@ def power_of_game(line):
                 max_cube_count_dict[color] = color_count
 
     # get power
-    power = max(1, max_cube_count_dict["blue"]) * max(1, max_cube_count_dict["red"]) * max(1, max_cube_count_dict["green"])
+    blue_count = max(1, max_cube_count_dict["blue"])
+    red_count = max(1, max_cube_count_dict["red"])
+    green_count = max(1, max_cube_count_dict["green"])
+    power = blue_count * red_count * green_count
 
     return power
 
