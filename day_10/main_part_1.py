@@ -1,6 +1,6 @@
 import numpy as np
 
-filename = "day_10/input_test.csv"
+filename = "day_10/input"
 
 
 def file_2_numpy(file_path):
@@ -166,8 +166,6 @@ print('S_idx', S_idx)
 S_magic_letter_replacement = "F"
 map[S_idx] = "F"
 
-print(map)
-
 i, j = S_idx
 is_first_move = True
 position_history = [S_idx]
@@ -178,22 +176,24 @@ while True:
 
     if len(possible_moves) == 0:
         raise Exception("No more moves possible")
-    
+
     if len(possible_moves) != 2:
         raise Exception("lol")
-    
+
     if is_first_move:
         move = possible_moves[0]  # you have to start somwhere
-    
+
     else:
-        
+    
         move_set = set(possible_moves) - set(position_history)
 
         if len(move_set) == 1:
             move = move_set.pop()
+
         elif len(move_set) == 0 and S_idx in possible_moves:
             print("La boucle est bouclée")
             break
+        
         else:
             raise Exception("lol")
 
