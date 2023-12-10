@@ -30,23 +30,29 @@ def get_next_moves(i, j, map):
 
     next_moves = []
 
-    rows, cols = map.shape
-
     value = map[i][j]
     print(value)
 
-    if value == "L":
-
+    if goes_up(value):
         up_move = get_up_move(i, j, map)
         if up_move is not None:
             next_moves.append(up_move)
 
-        if is_right_move_possible(i, j, map):
-            print("Going right")
-            next_moves.append((i-1, j))
-        else:
-            print("can't go right")
-        
+    if goes_down(value):
+        down_move = get_down_move(i, j, map)
+        if down_move is not None:
+            next_moves.append(down_move)
+
+    if goes_left(value):
+        left_move = get_left_move(i, j, map)
+        if left_move is not None:
+            next_moves.append(left_move)
+
+    if goes_right(value):
+        right_move = get_right_move(i, j, map)
+        if right_move is not None:
+            next_moves.append(right_move)
+
     return next_moves
 
 
@@ -157,6 +163,70 @@ print(map)
 S_idx = get_starting_indexes(map)
 print('S_idx', S_idx)
 
-# find connected to S
-moves = get_next_moves(3, 1, map)
+S_magic_letter_replacement = "F"
+map[S_idx] = "F"
+
+print(map)
+
+i, j = S_idx
+is_first_move = True
+position_history = [S_idx]
+
+while True:
+
+    possible_moves = get_next_moves(i, j, map)
+
+    if len(possible_moves) == 0:
+        raise Exception("No more moves possible")
+    
+    if len(possible_moves) != 2:
+        raise Exception("lol")
+    
+    if is_first_move:
+        move = possible_moves[0]  # you have to start somwhere
+    
+    else:
+        
+        move_set = set(possible_moves) - set(position_history)
+
+        if len(move_set) == 1:
+            move = move_set.pop()
+        elif len(move_set) == 0 and S_idx in possible_moves:
+            print("La boucle est bouclée")
+            break
+        else:
+            raise Exception("lol")
+
+    # Actual movement
+    position_history.append(move)
+    i, j = move
+    
+    is_first_move = False
+
+steps = len(position_history)
+print("steps", steps)
+
+farthest_points = steps / 2
+print("farthest_points", farthest_points)
+
+
+
+
+
+
+def find_S_real_letter(S_idx, map):
+
+    i = S_idx[0]
+    j = S_idx[1]
+    up_val = map[i+1][j]
+    down_val = map[i-1][j]
+    left_val = map[i][j-1]
+    right_val = map[i][j+1]
+
+    S_goes_up = goes_down(up_val)
+    S_goes_down = goes_up(down_val)
+    S_goes_left = goes_right(left_val)
+    S_goes_right = goes_left(right_val)
+
+    return None
 
