@@ -36,9 +36,9 @@ def get_seeds(lines):
     seeds_str = seed_line.split(":")[1]
     seeds_list = string_to_int_list(seeds_str)
 
-    new_seeds_list = np.empty(0) # np.zeros(len(MAP_SIZE))
+    new_seeds_list = np.empty(0)  # np.zeros(len(MAP_SIZE))
     for i in range(0, len(seeds_list), 2):
-        print("progress seeds: " + str(int(i / len(seeds_list) /2 * 100)) + "%")
+        print("progress seeds: " + str(int(i / len(seeds_list) / 2 * 100)) + "%")
         start = seeds_list[i]
         range_seed = seeds_list[i + 1]
         new_stuff = np.arange(start, start + range_seed)

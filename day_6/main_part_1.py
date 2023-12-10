@@ -25,6 +25,7 @@ def get_distance_traveled(hold_time, time):
 
     return distance
 
+
 times = string_to_int_list(lines[0].replace("Time:", ""))
 best_distances_reccorded = string_to_int_list(lines[1].replace("Distance:", ""))
 print(times)

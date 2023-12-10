@@ -158,6 +158,7 @@ def is_right_move_possible(i, j, map):
 
 map = file_2_numpy(filename)
 print("map shape", map.shape)
+MAP_SIZE = len(map[0, :])
 print(map)
 
 S_idx = get_starting_indexes(map)
@@ -208,3 +209,46 @@ print("steps", steps)
 
 farthest_points = steps / 2
 print("farthest_points", farthest_points)
+
+
+def is_point_inside_polygon(x, y, polygon):
+    """
+    Check if a point (x, y) is inside a polygon defined by its vertices.
+    The polygon should be a list of (x, y) vertex coordinates in a counterclockwise order.
+
+    Reference: https://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/
+    """
+
+    n = len(polygon)
+    inside = False
+
+    if (x, y) in polygon:
+        return False
+
+    # Count intersections of the polygon edges with a horizontal line through the test point
+    count = 0
+    for i in range(n):
+        x1, y1 = polygon[i]
+        x2, y2 = polygon[(i + 1) % n]
+
+        # Check if the ray crosses the edge
+        if (y1 > y) != (y2 > y) and x < (x2 - x1) * (y - y1) / (y2 - y1) + x1:
+            count += 1
+
+    # If the count is odd, the point is inside the polygon
+    if count % 2 == 1:
+        inside = True
+
+    return inside
+
+
+sum = 0
+new_map = map
+for i in range(MAP_SIZE):
+    for j in range(MAP_SIZE):
+        if is_point_inside_polygon(i, j, position_history):
+            sum += 1
+            new_map[i][j] = "X"
+
+print(sum)
+print(new_map)

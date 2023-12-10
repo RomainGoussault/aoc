@@ -1,6 +1,5 @@
-import re
-
 filename = "day_4/input.csv"
+
 
 def string_to_int_list(input_string):
     # Split the string into a list of substrings
@@ -10,6 +9,7 @@ def string_to_int_list(input_string):
     int_list = [int(substring) for substring in substrings]
 
     return int_list
+
 
 def line_to_two_int_list(line):
     # print(line)
@@ -26,6 +26,7 @@ def line_to_two_int_list(line):
 
     return numbers, winning_numbers_str
 
+
 def points_from_two_int_list(numbers, winning_numbers_str):
 
     intersection = set(numbers).intersection(set(winning_numbers_str))
@@ -34,6 +35,7 @@ def points_from_two_int_list(numbers, winning_numbers_str):
     points = int(2**(number_of_winning_numbers-1))
 
     return points
+
 
 with open(filename, 'r') as file:
     lines = file.readlines()

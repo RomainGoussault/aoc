@@ -11,7 +11,7 @@ def string_to_int_list(input_string):
     int_list = [int(substring) for substring in substrings]
 
     return int_list
-
+    
 
 def is_all_zero(line):
     for i in range(len(line)):

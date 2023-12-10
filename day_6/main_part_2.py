@@ -1,5 +1,3 @@
-import numpy as np
-
 filename = "day_6/input_test.csv"
 
 
@@ -24,6 +22,7 @@ def get_distance_traveled(hold_time, time):
     distance = speed * time_left
 
     return distance
+
 
 time = int(lines[0].replace("Time:", "").replace(" ", ""))
 best_distance_recorded = int(lines[1].replace("Distance:", "").replace(" ", ""))
