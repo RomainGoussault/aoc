@@ -1,6 +1,6 @@
 import numpy as np
 
-filename = "day_10/input"
+filename = "day_10/input_test.csv"
 
 
 def file_2_numpy(file_path):
