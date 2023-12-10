@@ -1,3 +1,3 @@
-# AoC 2023
+# AoC 2023 in Python
 
-Code should work but has NOT been cleaned up.
+![Build](https://github.com/RomainGoussault/aoc/actions/workflows/main.yml/badge.svg)
