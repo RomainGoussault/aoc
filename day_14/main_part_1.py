@@ -1,6 +1,6 @@
 import numpy as np
 
-filename = "day_14/input_test"
+filename = "day_14/input"
 
 
 def file_2_numpy(file_path: str) -> np.ndarray:
